@@ -5,8 +5,53 @@
 // Siga os comentários para implementar cada parte do desafio.
 
 int main() {
-    // Nível Novato - Posicionamento dos Navios
-    // Sugestão: Declare uma matriz bidimensional para representar o tabuleiro (Ex: int tabuleiro[5][5];).
+  // Nível Novato - Posicionamento dos Navios
+  // inicialização do tabuleiro
+    int tabuleiro[10][10];
+
+    for(int i = 0; i <= 9; i++)
+    {
+        for(int j = 0; j <= 9; j++)
+        {
+            tabuleiro[i][j] = 0;
+        }
+    }
+
+    // criação dos navios.
+    int navioHorizontal [3] = {3, 3, 3};
+    int navioVertical [3] = {3, 3, 3};
+
+    // Posições iniciais
+    int posiHorizontalL = 2;
+    int posiHorizontalC = 3;
+
+    int posiVerticalL = 7;
+    int posiVerticalC = 6;
+
+    // Coloca o navio horizontal (se couber)
+    if (posiHorizontalC + 2 < 10 && posiHorizontalL < 10) {
+        for (int i = 0; i < 3; i++) {
+            tabuleiro[posiHorizontalL][posiHorizontalC + i] = navioHorizontal[i];
+        }
+    }
+
+    // Coloca o navio vertical (se couber)
+    if (posiVerticalL + 2 < 10 && posiVerticalC < 10) {
+        for (int i = 0; i < 3; i++) {
+            tabuleiro[posiVerticalL + i][posiVerticalC] = navioVertical[i];
+        }
+    }
+
+    // Exibe o tabuleiro
+    for (int i = 0; i <= 9; i++) {
+        for (int j = 0; j <= 9; j++) {
+            printf(" %d", tabuleiro[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
     // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
     // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
 
@@ -35,6 +80,3 @@ int main() {
     // 0 0 1 0 0
     // 1 1 1 1 1
     // 0 0 1 0 0
-
-    return 0;
-}
