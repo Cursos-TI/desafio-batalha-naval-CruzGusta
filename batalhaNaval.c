@@ -7,7 +7,7 @@
 int main() {
   // Nível Novato - Posicionamento dos Navios
   // inicialização do tabuleiro
-    int tabuleiro[10][10];
+    int tabuleiro[10][10];// matriz do tabuleiro
 
     for(int i = 0; i <= 9; i++)
     {
@@ -20,23 +20,45 @@ int main() {
     // criação dos navios.
     int navioHorizontal [3] = {3, 3, 3};
     int navioVertical [3] = {3, 3, 3};
+    int navioDiagonal1 [3] = {3, 3, 3};
+    int navioDiagonal2 [3] = {3, 3, 3};
 
     // Posições iniciais
-    int posiHorizontalL = 2;
-    int posiHorizontalC = 3;
+    int posiHorizontalL = 2;// largura inicial
+    int posiHorizontalC = 3;// comprimento inicial
 
-    int posiVerticalL = 7;
-    int posiVerticalC = 6;
+    int posiVerticalL = 3;// largura inicial
+    int posiVerticalC = 8;// comprimento inicial
 
-    // Coloca o navio horizontal (se couber)
+    //posições iniciais dos navios na diagonal
+     int posiDiagonalL1 = 6;
+     int posiDiagonalC1 = 6;
+
+     if(posiDiagonalL1 + 2 < 10 && posiDiagonalC1 < 10){// verifica se há espaço suficiente para colocar 333
+        for(int i = 0; i < 3; i++){
+            tabuleiro[posiDiagonalL1 + i][posiDiagonalC1 + i] = navioDiagonal1[i]; // coluna aumenta e liha aumenta
+        }
+     }
+
+     // segundo navio da diagonal
+    int posiDiagonalL2 = 4;
+    int posiDiagonalC2 = 4;
+
+     if(posiDiagonalL2 + 2 < 10 && posiDiagonalC2 < 10){ 
+        for(int i = 0; i < 3; i++){
+            tabuleiro[posiDiagonalL2 + i][posiDiagonalC2 - i] = navioDiagonal2[i]; // linha aumenta e coluna diminui
+        }
+     }
+
+    // posiciona o navio horizontal na tabela (se couber)
     if (posiHorizontalC + 2 < 10 && posiHorizontalL < 10) {
         for (int i = 0; i < 3; i++) {
             tabuleiro[posiHorizontalL][posiHorizontalC + i] = navioHorizontal[i];
         }
     }
 
-    // Coloca o navio vertical (se couber)
-    if (posiVerticalL + 2 < 10 && posiVerticalC < 10) {
+    // posiciona o navio vertical na tabela (se couber)
+    if (posiVerticalL + 2 < 10 && posiVerticalC < 10) { // explique essa condição
         for (int i = 0; i < 3; i++) {
             tabuleiro[posiVerticalL + i][posiVerticalC] = navioVertical[i];
         }
@@ -45,7 +67,7 @@ int main() {
     // Exibe o tabuleiro
     for (int i = 0; i <= 9; i++) {
         for (int j = 0; j <= 9; j++) {
-            printf(" %d", tabuleiro[i][j]);
+            printf(" %d ", tabuleiro[i][j]);
         }
         printf("\n");
     }
